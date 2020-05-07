@@ -25,3 +25,12 @@
 ***@RestController***: It can be considered as a combination of @Controller and @ResponseBody annotations. The @RestController annotation is itself annotated with the @ResponseBody annotation. It eliminates the need for annotating each method with @ResponseBody.<br/><br/>
 ***@RequestAttribute***: It binds a method parameter to request attribute. It provides convenient access to the request attributes from a controller method. With the help of @RequestAttribute annotation, we can access objects that are populated on the server-side.<br/><br/><br/>
 
+## Spring Boot Application Properties
+Spring Boot provides various properties that can be configured in the **application.properties** file. The properties have default values. We can set a property(s) for the Spring Boot application. Spring Boot also allows us to define our own property if required.<br/>
+The application.properties file allows us to run an application in a different **environment**.<br/><br/>
+```java
+#configuring application name  
+spring.application.name = demoApplication  
+#configuring port  
+server.port = 8081
+```
