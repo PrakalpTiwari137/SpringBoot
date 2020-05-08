@@ -29,8 +29,10 @@
 Spring Boot provides various properties that can be configured in the **application.properties** file. The properties have default values. We can set a property(s) for the Spring Boot application. Spring Boot also allows us to define our own property if required.<br/>
 The application.properties file allows us to run an application in a different **environment**.<br/><br/>
 ```java
-#configuring application name  
+// configuring application name  
 spring.application.name = demoApplication  
-#configuring port  
+// configuring port  
 server.port = 8081
 ```
+
+<br/>
