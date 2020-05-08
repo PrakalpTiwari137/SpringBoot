@@ -36,3 +36,15 @@ server.port = 8081
 ```
 
 <br/>
+
+## RESTful - springboot
+### Creating a Hello World Service
+**Step 1:** Create a new class with the name HelloWorldController in the package com.javatpoint.server.main.<br/>
+**Step 2:** Whenever we create a web service, we need to define two things Get method and the URI. Now create the **helloWorld()** method which returns the string "Hello World." If we want to tell the spring MVC that it is going to handle the REST request, we have to add **@RestController** annotation. Now it becomes a rest controller which can handle the Rest request.<br/><br/>
+The next thing we have to do is create a mapping for the method. Add **@GetMapping** annotation just above the helloWorld() method.<br/>
+```java
+@GetMapping(path="/hello-world")  
+public String helloWorld() {  
+    return "Hello World";  
+}
+```
