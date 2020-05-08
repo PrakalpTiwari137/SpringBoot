@@ -77,6 +77,29 @@ The job of DispatcherServlet is to take an incoming URI and find the right combi
 It configures the **basicErrorController, errorAttributes, ErrorMvcAutoConfiguration, and DefaultErrorViewResolverConfiguration**. It creates the default error page which is known as **Whitelabel Error Page**.<br/><br/>
 
 ### Enhancing the Hello World Service with a Path Variable
-The **@PathVariable** annotation is used to extract the value from the URI. It is most suitable for the RESTful web service where the URL contains some value. Spring MVC allows us to use multiple @PathVariable annotations in the same method. A path variable is a critical part of creating rest resources.<br/>
+The **@PathVariable** annotation is used to extract the value from the URI. It is most suitable for the RESTful web service where the URL contains some value. Spring MVC allows us to use multiple @PathVariable annotations in the same method. A path variable is a critical part of creating rest resources.<br/><br/>
+```java
+//passing a path variable  
+@GetMapping(path="/hello-world/path-variable/{name}")  
+public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {  
+    return new HelloWorldBean(String.format("Hello World, %s", name)); //%s replace the name  
+}
+```
+Whatever value we will pass to the path variable is picked up by the controller and returned to the response.<br/>
+Type URL: http://localhost:8080/hello-world/path-variable/Prakalp<br/>
+Output: `{"message":"Hello World",Prakalp"}`<br/><br/>
+
+### Implementing the POST Method to create User Resource
+**@RequestBody**<br/>
+The @RequestBody annotation maps body of the web request to the method parameter. The body of the request is passed through an HttpMessageConverter. It resolves the method argument depending on the content type of the request.<br/><br/>
+The **@PostMapping** annotation is the specialized version of the @RequestMapping annotation which acts as a shortcut for **@RequestMapping(method=RequestMethod=POST)**. @PostMapping method handles the Http POST requests matched with the specified URI.<br/><br/>
+```java
+//method that posts a new user detail   
+@PostMapping("/users")  
+public void createUser(@RequestBody User user) {  
+    User sevedUser=service.save(user);    
+}  
+```
+
 
 
