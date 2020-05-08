@@ -43,8 +43,40 @@ server.port = 8081
 **Step 2:** Whenever we create a web service, we need to define two things Get method and the URI. Now create the **helloWorld()** method which returns the string "Hello World." If we want to tell the spring MVC that it is going to handle the REST request, we have to add **@RestController** annotation. Now it becomes a rest controller which can handle the Rest request.<br/><br/>
 The next thing we have to do is create a mapping for the method. Add **@GetMapping** annotation just above the helloWorld() method.<br/>
 ```java
-@GetMapping(path="/hello-world")  
-public String helloWorld() {  
-    return "Hello World";  
-}
+@RestController  
+public class HelloWorldController {  
+    //using get method and hello-world as URI  
+    @GetMapping(path="/hello-world")  
+    public String helloWorld() {  
+        return "Hello World";  
+    }  
+}  
 ```
+
+<br/>
+
+### Spring Boot Auto Configuration and Dispatcher Servlet
+**Spring Boot Auto Configuration:**<br/>
+Spring Boot automatically configures a spring application based on dependencies present or not present in the classpath as a jar, beans, properties, etc.<br/>
+Auto-configuration can be enabled by adding **@SpringBootApplication** or **@EnableAutoConfiguration** annotation in startup class. It indicates that it is a spring context file.<br/>
+It enables something called **auto-configuration**.<br/>
+It enable something called **components scan**. It is the features of Spring where it will start automatically scanning classes in the package and sub package for any bean file.<br/>
+<br/>Classes can be **excluded** from auto-configuration by adding:
+```java
+@SpringBootApplication (exclude={JacksonAutoConfiguration.class, JmxAutoConfiguration.class})
+```
+Or add the following statement in the **application.properties** file.
+```java
+spring.autoconfiguration.exclude=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration
+```
+
+<br/><br/>
+**Dispatcher Servlet:**<br/>
+In Spring MVC all incoming requests go through a single servlet is called Dispatcher Servlet (front controller). The front controller is a design pattern in web application development. A single servlet receives all the request and transfers them to all other components of the application.<br/>
+The job of DispatcherServlet is to take an incoming URI and find the right combination of **handlers** (Controller classes) and **views** (usually JSPs). When the DispatcherServlet determines the view, it renders it as the response. Finally, the DispatcherServlet returns the Response Object to back to the client.<br/>
+It configures the **basicErrorController, errorAttributes, ErrorMvcAutoConfiguration, and DefaultErrorViewResolverConfiguration**. It creates the default error page which is known as **Whitelabel Error Page**.<br/><br/>
+
+### Enhancing the Hello World Service with a Path Variable
+The **@PathVariable** annotation is used to extract the value from the URI. It is most suitable for the RESTful web service where the URL contains some value. Spring MVC allows us to use multiple @PathVariable annotations in the same method. A path variable is a critical part of creating rest resources.<br/>
+
+
