@@ -101,5 +101,13 @@ public void createUser(@RequestBody User user) {
 }  
 ```
 
+<br/>
+
+### Enhancing POST Method to Return Correct HTTP Code and Status Location
+**ResponseEntity Class**<br/>
+The ResponseEntity is a class which extends HttpEntity and HttpStatus class. It is defined in org.springframework.http.RequestEntity.<br/>
+It is used in **RestTemplate** and **@Controller** methods.<br/>
+It is used as parameter in **getForEntity()** and **exchange()** method.<br/>
+
 
 
